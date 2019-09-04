@@ -432,7 +432,7 @@ public class RPG_Educativo {
 		} else if ((media >= 6) && (contadorFrenquencia < 3)) {
 			System.out.println("\nSuas notas foram acima da média, mas você foi reprovado por FALTA!!");
 		} else {
-			System.out.println("\nInfelizmente suas notas foram insuficientes, e você acabou sendo reprovado!!");
+			System.out.println(dadosJogador[0] + ", infelizmente suas notas foram insuficientes, e você acabou sendo reprovado!!");
 		}
 		/*
 		 * como a regra de aprovação é >= 6 e ele tem que fazer pelo menos 5 atividades
