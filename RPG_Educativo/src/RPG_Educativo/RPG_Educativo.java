@@ -10,7 +10,7 @@ public class RPG_Educativo {
 
 	// Introdução do RPG
 	static void introducao() {
-		System.out.println("Olá seja bem vindo ao jogo de Rpg. Autor: JOÃO PAULO FERNANDES SOUZA,\n");
+		System.out.println("Olá seja bem vindo ao jogo de RPG. Autor: JOÃO PAULO FERNANDES SOUZA,\n");
 		System.out.println(
 				"A história irá ser contada por apenas um personagem onde as características (nome, idade, sexo, cidade, escola) serão informadas pelo jogador.\nO jogo se inicia com o jogador informando seus dados e no início do ano letivo.\nEm seu semestre o personagem será submetido a 2 provas e 6 ADOs (Atividades a serem entregues). \n"
 						+ "Após os dados serem informados, será exibido para o jogador, um conteúdo programático onde ele saberá quais são as próximas etapas a realizar.\nNesse conteúdo irão ter os assuntos da disciplina, diversas regras e os pesos de cada avaliação para sua aprovação.\n");
