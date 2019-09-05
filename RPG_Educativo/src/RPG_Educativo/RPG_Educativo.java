@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class RPG_Educativo {
 
-	static String dadosJogador[] = new String[4];
+	static String dadosJogador[] = new String[5];
 	static Scanner grava = new Scanner(System.in);
 	static int contadorFrenquencia = 0;
 
@@ -16,8 +16,10 @@ public class RPG_Educativo {
 						+ "Após os dados serem informados, será exibido para o jogador um conteúdo programático onde ele saberá quais são as próximas etapas a realizar.\nNesse conteúdo irão ter os assuntos da disciplina, diversas regras e os pesos de cada avaliação para sua aprovação.\n");
 	}
 
-	// Função de cadastro do jogador
+	// Função de cadastro do jogador.
 	static void cadastroJogador() {
+		System.out.println("Digite seus dados para começar o jogo!\n");
+
 		String texto = "";
 
 		for (int i = 0; i < dadosJogador.length; i++) {
@@ -37,7 +39,7 @@ public class RPG_Educativo {
 		}
 	}
 
-	// Função que exibe para o jogador o conteudo do semestre e suas regras
+	// Função que exibe para o jogador o conteudo do semestre e suas regras.
 	static void conteudoProgramatico() {
 		System.out.println("Vamos ver abaixo no conteúdo programático\n");
 		separacaoComLinhas();
@@ -179,7 +181,7 @@ public class RPG_Educativo {
 		return resultado;
 	}
 
-	// Função das provas do semestre
+	// Função das provas do semestre.
 	static double provas(int opcao) {
 		double resultado = 0;
 		int cont = 0;
@@ -256,6 +258,7 @@ public class RPG_Educativo {
 			do {
 				cont++;
 				if (cont == 1) {
+					separacaoComLinhas();
 					System.out.println("PROVA 2 - (10,0 pontos)");
 					System.out.println("");
 					System.out.println("Questão 1 - (2,5 pontos)");
@@ -334,8 +337,8 @@ public class RPG_Educativo {
 		return resultado;
 	}
 
-	// Função das aulas para aprendizado
-	static int aulas(int opcao) {
+	// Função das aulas para aprendizado.
+	static void aulas(int opcao) {
 
 		switch (opcao) {
 		case 1:
@@ -405,10 +408,9 @@ public class RPG_Educativo {
 					+ "\n" + "Exemplo:\n" + "Volume do cubo-> V = L.L.L = L³\n");
 			break;
 		}
-		return opcao;
 	}
 
-	// Função para o calculo das médias
+	// Função para o calculo das médias.
 	static double media(double p1, double p2, int ado1, int ado2, int ado3, int ado4, int ado5, int ado6) {
 		double media = 0;
 		int totalAdos = 0;
@@ -419,20 +421,21 @@ public class RPG_Educativo {
 			totalAdos = totalAdos + ado6;
 		}
 
-		media = ((p1 * 0.5) + (p2 * 0.3) + (totalAdos * 0.2));
+		media = ((p1 * 0.3) + (p2 * 0.5) + (totalAdos * 0.2));
 
 		return media;
 	}
 
-	// Função que exibe o resultado final do semestre
+	// Função que exibe o resultado final do semestre.
 	static void resultadoSemestre(double media) {
-		System.out.println("\nSua média semestral foi de: " + media);
+		System.out.println("\nSua média semestral foi de: " + media + "\n");
 		if ((media >= 6) && (contadorFrenquencia >= 3)) {
 			System.out.println("\nParabéns " + dadosJogador[0] + ", você foi aprovado!!");
 		} else if ((media >= 6) && (contadorFrenquencia < 3)) {
 			System.out.println("\nSuas notas foram acima da média, mas você foi reprovado por FALTA!!");
 		} else {
-			System.out.println(dadosJogador[0] + ", infelizmente suas notas foram insuficientes, e você acabou sendo reprovado!!");
+			System.out.println(
+					dadosJogador[0] + " infelizmente suas notas foram insuficientes, e você acabou sendo reprovado!!");
 		}
 		/*
 		 * como a regra de aprovação é >= 6 e ele tem que fazer pelo menos 5 atividades
@@ -441,188 +444,256 @@ public class RPG_Educativo {
 		 */
 	}
 
-	// função para separar textos com linhas
+	// função para separar textos com linhas.
 	static void separacaoComLinhas() {
 		System.out.println(
 				"*******************************************************************************************************************************************************************");
 	}
 
-	// Funcao do codigo que chama todas as funções e foi montado todo o dialogo aqui
+	// funcao dialogos.
+	static double dialogos(int opcao) {
+
+		double resultadoProvas = 0;
+
+		switch (opcao) {
+		case 1:
+			System.out.println("Bem-vindo! " + dadosJogador[0] + " ao nosso ano letivo.\n");
+			break;
+		case 2:
+			System.out.println("\nAs aulas começaram finalmente! Caro(a) " + dadosJogador[0]
+					+ ", na nossa primeira aula iremos abordar o assunto de [EQUAÇÃO de 1º GRAU] e contar com a nossa primeira ADO.\n");
+			System.out.println("Vamos começar nossa primeira aula?\n");
+			break;
+		case 3:
+			System.out.println(
+					"\nMuito bem! Fizemos nossa primeira ADO e vamos continuar aprendendo ainda mais! Vamos para mais uma aula e logo em seguida mais uma ADO.\n");
+			break;
+		case 4:
+			System.out.println(
+					"\nAo decorrer das aulas você vai pegando o ritmo, vamos para a aula 3. Hoje vamos aprender [TEOREMA de PITÁGORAS].\n");
+			break;
+		case 5:
+			separacaoComLinhas();
+			System.out.println(
+					"\nPrezado aluno estamos na metade de nosso período letivo assim iniciando a semana de PROVA. Estudou? Está preparado? Então vamos lá!\n");
+			separacaoComLinhas();
+			break;
+		case 6:
+			resultadoProvas = provas(1);
+			System.out.println("A nota da sua prova 1 foi: " + resultadoProvas + "\n");
+			break;
+		case 7:
+			separacaoComLinhas();
+			System.out.println(
+					"\nUfa!!! Já passou da metade, vamos abordar novos assuntos e praticar exercícios, Nessa aula 4 iremos abordar [PROBABILIDADE].\n");
+			break;
+		case 8:
+			separacaoComLinhas();
+			System.out.println(
+					"Agora falta pouco para o semestre acabar, porém os desafios são ainda maiores, hoje na aula 5 iremos aprender o assunto [CALCULO de ÁREAS].\n");
+			break;
+		case 9:
+			System.out.println(
+					"\nCaro jogador, hoje teremos nossa última aula e última ADO antes da PROVA 2, nosso proximo assunto é [CÁLCULO do VOLUME dos SÓLIDOS GEOMÉTRICOS], vamos estudar!\n");
+			break;
+		case 10:
+			separacaoComLinhas();
+			System.out.println(
+					"\nApós tantas horas de dedicação nos estudos essa é a hora para mostrar o que você realmente sabe! Hoje teremos a PROVA 2 que irá aborar todo o conteúdo do semestre, \n\n"
+							+ "Boa sorte! " + dadosJogador[0] + "\n");
+			break;
+		case 11:
+			resultadoProvas = provas(2);
+			separacaoComLinhas();
+			System.out.println("A nota da sua prova 2 foi: " + resultadoProvas);
+			separacaoComLinhas();
+			break;
+		}
+		return resultadoProvas;
+	}
+
+	// funcao continuar jogando.
+	// funcao continuar jogando.
+	static void continuarJogando() {
+
+		int opcao = 0;
+
+		System.out.println("Digite [1] para continuar");
+
+		while (opcao != 1) {
+			opcao = grava.nextInt();
+			if (opcao == 1) {
+				break;
+			} else {
+				System.out.println("Opcão inválida! " + "Digite Novamente:\n");
+
+			}
+		}
+	}
+
+	// funcao para escolher se vou fazer ou não as ADOS.
+
+	// ACHO QUE VOU TER QUE FAZER UMA VARIAVEL DE RESULTADO PARA COLHER E JOGAR NO
+	// MAIN
+	// escolher ou nao fazer as ADOS.
+	static int escolhaAdos(int opcao) {
+		int resultado = 0;
+
+		switch (opcao) {
+		case 1:
+			System.out.println("Deseja realizar a ADO 1? (Digite [1] para SIM | Digite [2] para NÃO)");
+			int escolha = grava.nextInt();
+			if (escolha == 1) {
+				resultado = ados(1);
+				if (resultado == 2) {
+					System.out.println("[Parabéns você acertou a ADO 1!]\n");
+				} else {
+					System.out.println("[Você errou a ADO 1]\n");
+				}
+				contadorFrenquencia = contadorFrenquencia + 1;
+			} else {
+				System.out.println("[Você Tirou 0 pontos na ADO 1]\n");
+			}
+			break;
+		case 2:
+			System.out.println("Deseja realizar a ADO 2? (Digite [1] para SIM | Digite [2] para NÃO)");
+			int escolha2 = grava.nextInt();
+			if (escolha2 == 1) {
+				resultado = ados(2);
+				if (resultado == 2) {
+					System.out.println("[Parabéns você acertou a ADO 2!]\n");
+				} else {
+					System.out.println("[Você errou a ADO 2]\n");
+				}
+				contadorFrenquencia = contadorFrenquencia + 1;
+			} else {
+				System.out.println("[Você Tirou 0 pontos na ADO 2]\n");
+			}
+			break;
+		case 3:
+			System.out.println("Deseja realizar a ADO 3? (Digite [1] para SIM | Digite [2] para NÃO)");
+			int escolha3 = grava.nextInt();
+			if (escolha3 == 1) {
+				resultado = ados(3);
+				if (resultado == 2) {
+					System.out.println("[Parabéns você acertou a ADO 3!]\n");
+				} else {
+					System.out.println("[Você errou a ADO 3]\n");
+				}
+				contadorFrenquencia = contadorFrenquencia + 1;
+			} else {
+				System.out.println("[Você Tirou 0 pontos na ADO 3]\n");
+			}
+			break;
+		case 4:
+			System.out.println("Deseja realizar a ADO 4? (Digite [1] para SIM | Digite [2] para NÃO)");
+			int escolha4 = grava.nextInt();
+			if (escolha4 == 1) {
+				resultado = ados(4);
+				if (resultado == 2) {
+					System.out.println("[Parabéns você acertou a ADO 4!]\n");
+				} else {
+					System.out.println("[Você errou a ADO 4]\n");
+				}
+				contadorFrenquencia = contadorFrenquencia + 1;
+			} else {
+				System.out.println("[Você Tirou 0 pontos na ADO 4]\n");
+			}
+			break;
+		case 5:
+			System.out.println("Deseja realizar a ADO 5? (Digite [1] para SIM | Digite [2] para NÃO)");
+			int escolha5 = grava.nextInt();
+			if (escolha5 == 1) {
+				resultado = ados(5);
+				if (resultado == 2) {
+					System.out.println("[Parabéns você acertou a ADO 5!]\n");
+				} else {
+					System.out.println("[Você errou a ADO 5]\n");
+				}
+				contadorFrenquencia = contadorFrenquencia + 1;
+			} else {
+				System.out.println("[Você Tirou 0 pontos na ADO 5]\n");
+			}
+			break;
+
+		case 6:
+			System.out.println("Deseja realizar a ADO 6? (Digite [1] para SIM | Digite [2] para NÃO)");
+			int escolha6 = grava.nextInt();
+			if (escolha6 == 1) {
+				resultado = ados(6);
+				if (resultado == 2) {
+					System.out.println("[Parabéns você acertou a ADO 6!]\n");
+				} else {
+					System.out.println("[Você errou a ADO 6]\n");
+				}
+				contadorFrenquencia = contadorFrenquencia + 1;
+			} else {
+				System.out.println("[Você Tirou 0 pontos na ADO 6]\n");
+			}
+			break;
+		}
+		return resultado;
+	}
+
+	// Funcao principal que chama todas as funções.
 	public static void main(String[] args) {
 		double prova1 = 0, prova2 = 0, media = 0;
 		int ado1 = 0, ado2 = 0, ado3 = 0, ado4 = 0, ado5 = 0, ado6 = 0;
 
-		// String informacoesJogador = "";
-
 		introducao();
-
-		System.out.println("Digite seus dados para começar o jogo!\n");
 
 		cadastroJogador();
 
-		System.out.println("Bem-vindo! " + dadosJogador[0] + " ao nosso ano letivo.\n");
-		System.out.println("Digite [1] para continuar");
-		int OpContinuar = 0;
-
-		while (OpContinuar != 1) {
-			OpContinuar = grava.nextInt();
-			if (OpContinuar == 1) {
-				break;
-			} else {
-				System.out.println("Opcão inválida!\n");
-				System.out.println("Digite Novamente:\n");
-			}
-		}
+		dialogos(1);
+		continuarJogando();
 
 		conteudoProgramatico();
 
-		System.out.println("\nAs aulas começaram finalmente! Caro(a) " + dadosJogador[0]
-				+ ", na nossa primeira aula iremos abordar o assunto de [EQUAÇÃO de 1º GRAU] e contar com a nossa primeira ADO.\n");
-		// editando
-		System.out.println("Vamos começar nossa primeira aula?\n");
-		System.out.println("Digite [1] para continuar\n");
-		int OpContinuar1 = 0;
+		dialogos(2);
+		continuarJogando();
 
-		while (OpContinuar1 != 1) {
-			OpContinuar1 = grava.nextInt();
-			if (OpContinuar1 == 1) {
-				aulas(1);
-			} else {
-				System.out.println("Opcão inválida!\n");
-				System.out.println("Digite Novamente:\n");
-			}
-		}
+		aulas(1);
+		ado1 = escolhaAdos(1);
 
-		System.out.println("Deseja realizar a ADO 1? (Digite [1] para SIM | Digite [2] para NÃO)");
-		int escolha = grava.nextInt();
-		if (escolha == 1) {
-			ado1 = ados(1);
-			if (ado1 == 2) {
-				System.out.println("[Parabéns você acertou a ADO 1!]");
-			} else {
-				System.out.println("[Você errou a ADO 1]");
-			}
-			contadorFrenquencia = contadorFrenquencia + 1;
-		} else {
-			System.out.println("[Você Tirou 0 pontos na ADO 1]");
-		}
-
-		System.out.println(
-				"\nMuito bem! Fizemos nossa primeira ADO e vamos continuar aprendendo ainda mais! Vamos para mais uma aula e logo em seguida mais uma ADO.\n");
+		dialogos(3);
 
 		aulas(2);
+		ado2 = escolhaAdos(2);
 
-		System.out.println("Deseja realizar a ADO 2? (Digite [1] para SIM | Digite [2] para NÃO)");
-		int escolha2 = grava.nextInt();
-		if (escolha2 == 1) {
-			ado2 = ados(2);
-			if (ado2 == 2) {
-				System.out.println("[Parabéns você acertou a ADO 2!]");
-			} else {
-				System.out.println("[Você errou a ADO 2]");
-			}
-			contadorFrenquencia = contadorFrenquencia + 1;
-		} else {
-			System.out.println("[Você Tirou 0 pontos na ADO 2]");
-		}
-
-		System.out.println(
-				"\nAo decorrer das aulas você vai pegando o ritmo, vamos para a aula 3. Hoje vamos aprender [TEOREMA de PITÁGORAS].\n");
+		dialogos(4);
 
 		aulas(3);
+		ado3 = escolhaAdos(3);
 
-		System.out.println("Deseja realizar a ADO 3? (Digite [1] para SIM | Digite [2] para NÃO)");
-		int escolha3 = grava.nextInt();
-		if (escolha3 == 1) {
-			ado3 = ados(3);
-			if (ado3 == 2) {
-				System.out.println("[Parabéns você acertou a ADO 3!]");
-			} else {
-				System.out.println("[Você errou a ADO 3]");
-			}
-			contadorFrenquencia = contadorFrenquencia + 1;
-		} else {
-			System.out.println("[Você Tirou 0 pontos na ADO 3]");
-		}
-		separacaoComLinhas();
-		System.out.println(
-				"\nPrezado aluno estamos na metade de nosso período letivo assim iniciando a semana de PROVA. Estudou? Está preparado? Então vamos lá!\n");
-		separacaoComLinhas();
+		dialogos(5);
+		
+		continuarJogando();
+		prova1 = dialogos(6);
 
-		prova1 = provas(1);
-
-		System.out.println("A nota da sua prova 1 foi: " + prova1 + "\n");
-
-		separacaoComLinhas();
-		System.out.println(
-				"\nUfa!!! Já passou da metade, vamos abordar novos assuntos e praticar exercícios, Nessa aula 4 iremos abordar [PROBABILIDADE].\n");
+		dialogos(7);
 
 		aulas(4);
+		ado4 = escolhaAdos(4);
 
-		System.out.println("Deseja realizar a ADO 4? (Digite [1] para SIM | Digite [2] para NÃO)");
-		int escolha4 = grava.nextInt();
-		if (escolha4 == 1) {
-			ado4 = ados(4);
-			if (ado4 == 2) {
-				System.out.println("[Parabéns você acertou a ADO 4!]");
-			} else {
-				System.out.println("[Você errou a ADO 4]\n");
-			}
-			contadorFrenquencia = contadorFrenquencia + 1;
-		} else {
-			System.out.println("[Você Tirou 0 pontos na ADO 4]");
-		}
-
-		System.out.println(
-				"Agora falta pouco para o semestre acabar, porém os desafios são ainda maiores, hoje na aula 5 iremos aprender o assunto [CALCULO de ÁREAS].\n");
+		dialogos(8);
 
 		aulas(5);
+		ado5 = escolhaAdos(5);
 
-		System.out.println("Deseja realizar a ADO 5? (Digite [1] para SIM | Digite [2] para NÃO)");
-		int escolha5 = grava.nextInt();
-		if (escolha5 == 1) {
-			ado5 = ados(5);
-			if (ado5 == 2) {
-				System.out.println("[Parabéns você acertou a ADO 5!]");
-			} else {
-				System.out.println("[Você errou a ADO 5]");
-			}
-			contadorFrenquencia = contadorFrenquencia + 1;
-		} else {
-			System.out.println("[Você Tirou 0 pontos na ADO 5]");
-		}
-
-		System.out.println(
-				"\nCaro jogador, hoje teremos nossa última aula e última ADO antes da PROVA 2, nosso proximo assunto é [CÁLCULO do VOLUME dos SÓLIDOS GEOMÉTRICOS], vamos estudar!\n");
+		dialogos(9);
 
 		aulas(6);
+		ado6 = escolhaAdos(6);
 
-		System.out.println("Deseja realizar a ADO 6? (Digite [1] para SIM | Digite [2] para NÃO)");
-		int escolha6 = grava.nextInt();
-		if (escolha6 == 1) {
-			ado6 = ados(6);
-			if (ado6 == 2) {
-				System.out.println("[Parabéns você acertou a ADO 6!]");
-			} else {
-				System.out.println("[Você errou a ADO 6]");
-			}
-			contadorFrenquencia = contadorFrenquencia + 1;
-		} else {
-			System.out.println("[Você Tirou 0 pontos na ADO 6]");
-		}
-
-		System.out.println(
-				"\n Após tantas horas de dedicação nos estudos essa é a hora para mostrar o que você realmente sabe! \n Hoje teremos a PROVA 2 que irá aborar todo o conteúdo do semestre, Boa sorte jogador!\n");
+		dialogos(10);
 		
-		prova2 = provas(2);
-		
-		separacaoComLinhas();
-		System.out.println("A nota da sua prova 2 foi: " + prova2);
-		separacaoComLinhas();
+		continuarJogando();
+		prova2 = dialogos(11);
 
 		media = media(prova1, prova2, ado1, ado2, ado3, ado4, ado5, ado6);
-		
+
 		resultadoSemestre(media);
+
 		separacaoComLinhas();
 	}
 }
