@@ -410,7 +410,7 @@ public class RPG_Educativo {
 		}
 	}
 
-	// Função para o calculo das médias.
+	// Função para o cálculo das médias.
 	static double media(double p1, double p2, int ado1, int ado2, int ado3, int ado4, int ado5, int ado6) {
 		double media = 0;
 		int totalAdos = 0;
@@ -444,13 +444,13 @@ public class RPG_Educativo {
 		 */
 	}
 
-	// função para separar textos com linhas.
+	// Função para separar textos com linhas.
 	static void separacaoComLinhas() {
 		System.out.println(
 				"*******************************************************************************************************************************************************************");
 	}
 
-	// funcao dialogos.
+	// Função dialogos.
 	static double dialogos(int opcao) {
 
 		double resultadoProvas = 0;
@@ -475,7 +475,7 @@ public class RPG_Educativo {
 		case 5:
 			separacaoComLinhas();
 			System.out.println(
-					"\nPrezado aluno estamos na metade de nosso período letivo assim iniciando a semana de PROVA. Estudou? Está preparado? Então vamos lá!\n");
+					"\nPrezado " + dadosJogador[0] + " estamos na metade de nosso período letivo assim iniciando a semana de PROVA. Estudou? Está preparado? Então vamos lá!\n");
 			separacaoComLinhas();
 			break;
 		case 6:
@@ -494,7 +494,7 @@ public class RPG_Educativo {
 			break;
 		case 9:
 			System.out.println(
-					"\nCaro jogador, hoje teremos nossa última aula e última ADO antes da PROVA 2, nosso proximo assunto é [CÁLCULO do VOLUME dos SÓLIDOS GEOMÉTRICOS], vamos estudar!\n");
+					"\nCaro "+ dadosJogador[0] + ", hoje teremos nossa última aula e última ADO antes da PROVA 2, nosso proximo assunto é [CÁLCULO do VOLUME dos SÓLIDOS GEOMÉTRICOS], vamos estudar!\n");
 			break;
 		case 10:
 			separacaoComLinhas();
@@ -512,8 +512,7 @@ public class RPG_Educativo {
 		return resultadoProvas;
 	}
 
-	// funcao continuar jogando.
-	// funcao continuar jogando.
+	// Função continuar jogando.
 	static void continuarJogando() {
 
 		int opcao = 0;
@@ -531,11 +530,7 @@ public class RPG_Educativo {
 		}
 	}
 
-	// funcao para escolher se vou fazer ou não as ADOS.
-
-	// ACHO QUE VOU TER QUE FAZER UMA VARIAVEL DE RESULTADO PARA COLHER E JOGAR NO
-	// MAIN
-	// escolher ou nao fazer as ADOS.
+	// Função de escolher ou não fazer as ADOS.
 	static int escolhaAdos(int opcao) {
 		int resultado = 0;
 
@@ -555,6 +550,7 @@ public class RPG_Educativo {
 				System.out.println("[Você Tirou 0 pontos na ADO 1]\n");
 			}
 			break;
+
 		case 2:
 			System.out.println("Deseja realizar a ADO 2? (Digite [1] para SIM | Digite [2] para NÃO)");
 			int escolha2 = grava.nextInt();
@@ -570,6 +566,7 @@ public class RPG_Educativo {
 				System.out.println("[Você Tirou 0 pontos na ADO 2]\n");
 			}
 			break;
+
 		case 3:
 			System.out.println("Deseja realizar a ADO 3? (Digite [1] para SIM | Digite [2] para NÃO)");
 			int escolha3 = grava.nextInt();
@@ -585,6 +582,7 @@ public class RPG_Educativo {
 				System.out.println("[Você Tirou 0 pontos na ADO 3]\n");
 			}
 			break;
+
 		case 4:
 			System.out.println("Deseja realizar a ADO 4? (Digite [1] para SIM | Digite [2] para NÃO)");
 			int escolha4 = grava.nextInt();
@@ -600,6 +598,7 @@ public class RPG_Educativo {
 				System.out.println("[Você Tirou 0 pontos na ADO 4]\n");
 			}
 			break;
+
 		case 5:
 			System.out.println("Deseja realizar a ADO 5? (Digite [1] para SIM | Digite [2] para NÃO)");
 			int escolha5 = grava.nextInt();
@@ -631,11 +630,14 @@ public class RPG_Educativo {
 				System.out.println("[Você Tirou 0 pontos na ADO 6]\n");
 			}
 			break;
-		}
+		default:
+			System.out.println("Opção Inválida");
+			break;
+		}// fim switch
 		return resultado;
 	}
 
-	// Funcao principal que chama todas as funções.
+	// Metodo principal para chamar todas as funções.
 	public static void main(String[] args) {
 		double prova1 = 0, prova2 = 0, media = 0;
 		int ado1 = 0, ado2 = 0, ado3 = 0, ado4 = 0, ado5 = 0, ado6 = 0;
@@ -666,7 +668,7 @@ public class RPG_Educativo {
 		ado3 = escolhaAdos(3);
 
 		dialogos(5);
-		
+
 		continuarJogando();
 		prova1 = dialogos(6);
 
@@ -686,7 +688,7 @@ public class RPG_Educativo {
 		ado6 = escolhaAdos(6);
 
 		dialogos(10);
-		
+
 		continuarJogando();
 		prova2 = dialogos(11);
 
@@ -697,3 +699,4 @@ public class RPG_Educativo {
 		separacaoComLinhas();
 	}
 }
+	
