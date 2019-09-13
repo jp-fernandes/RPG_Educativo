@@ -474,8 +474,8 @@ public class RPG_Educativo {
 			break;
 		case 5:
 			separacaoComLinhas();
-			System.out.println(
-					"\nPrezado " + dadosJogador[0] + " estamos na metade de nosso período letivo assim iniciando a semana de PROVA. Estudou? Está preparado? Então vamos lá!\n");
+			System.out.println("\nPrezado " + dadosJogador[0]
+					+ " estamos na metade de nosso período letivo assim iniciando a semana de PROVA. Estudou? Está preparado? Então vamos lá!\n");
 			separacaoComLinhas();
 			break;
 		case 6:
@@ -493,8 +493,8 @@ public class RPG_Educativo {
 					"Agora falta pouco para o semestre acabar, porém os desafios são ainda maiores, hoje na aula 5 iremos aprender o assunto [CALCULO de ÁREAS].\n");
 			break;
 		case 9:
-			System.out.println(
-					"\nCaro "+ dadosJogador[0] + ", hoje teremos nossa última aula e última ADO antes da PROVA 2, nosso proximo assunto é [CÁLCULO do VOLUME dos SÓLIDOS GEOMÉTRICOS], vamos estudar!\n");
+			System.out.println("\nCaro " + dadosJogador[0]
+					+ ", hoje teremos nossa última aula e última ADO antes da PROVA 2, nosso proximo assunto é [CÁLCULO do VOLUME dos SÓLIDOS GEOMÉTRICOS], vamos estudar!\n");
 			break;
 		case 10:
 			separacaoComLinhas();
@@ -516,6 +516,7 @@ public class RPG_Educativo {
 	static void continuarJogando() {
 
 		int opcao = 0;
+		int contador = 0;
 
 		System.out.println("Digite [1] para continuar");
 
@@ -525,7 +526,11 @@ public class RPG_Educativo {
 				break;
 			} else {
 				System.out.println("Opcão inválida! " + "Digite Novamente:\n");
-
+				contador++;
+			}
+			if (contador == 3) {
+				System.out.println("Para prosseguir é preciso digitar [1]\n");
+				contador = 0;
 			}
 		}
 	}
@@ -633,10 +638,10 @@ public class RPG_Educativo {
 		default:
 			System.out.println("Opção Inválida");
 			break;
-		}// fim switch
+		}
 		return resultado;
 	}
-
+	
 	// Metodo principal para chamar todas as funções.
 	public static void main(String[] args) {
 		double prova1 = 0, prova2 = 0, media = 0;
@@ -699,4 +704,3 @@ public class RPG_Educativo {
 		separacaoComLinhas();
 	}
 }
-	
